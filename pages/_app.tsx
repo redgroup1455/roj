@@ -4,8 +4,8 @@ import { NextUIProvider } from "@nextui-org/react";
 
 export default function App({ Component, pageProps }: AppProps) {
   console.log(`
-                  Welcome to ROJ
-      Developers / Sangho129, Oein, Kalswns
+          Welcome to ROJ
+      Developers / Red Group
   `);
   return (
     <NextUIProvider>

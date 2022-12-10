@@ -4,6 +4,7 @@ import { useState } from "react";
 export default function Signin() {
   let [policyOpened, setPolicyOpened] = useState<boolean>(false);
   let [policyAccepted, setPolicyAccepted] = useState<boolean>(false);
+
   return (
     <div
       style={{
@@ -186,7 +187,7 @@ export default function Signin() {
               </Checkbox>
             </div>
             <Button auto color="error" disabled={!policyAccepted}>
-              Sign Up
+              Next
             </Button>
           </Row>
         </div>

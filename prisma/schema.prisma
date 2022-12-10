@@ -1,0 +1,28 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  username    String // 로그인 할때 입력할 이름
+  userUuid    String    @id @unique @default(cuid())
+  nickname    String // 다른 사람들에게 보일 이름
+  phoneNumber String // 핸번
+  email       String // 이메일
+  description String // 한마디
+  name        String // 실명
+  point       Int       @default(0) // 포인트
+  Session     Session[]
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userUuid     String
+  expires      DateTime
+  user         User     @relation(fields: [userUuid], references: [userUuid])
+}

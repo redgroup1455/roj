@@ -60,9 +60,9 @@ export default function CustomNavbar() {
           </Navbar.Link>
         </Navbar.Content>
         <Navbar.Content>
-          <Navbar.Link color="inherit" href="#">
-            로그인
-          </Navbar.Link>
+          <Navbar.Item>
+            <Link href="/auth/signin">로그인</Link>
+          </Navbar.Item>
           <Navbar.Item>
             <Button auto flat href="#" color="error">
               회원가입

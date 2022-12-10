@@ -1,5 +1,4 @@
 import { Checkbox, Input, Row, Text, Button } from "@nextui-org/react";
-import CustomNavbar from "../../components/Navbar";
 
 export default function Signin() {
   return (
@@ -51,9 +50,9 @@ export default function Signin() {
             clearable
             bordered
             fullWidth
-            color="primary"
+            color="error"
             size="lg"
-            labelPlaceholder="Email"
+            labelPlaceholder="Username"
             css={{
               marginBottom: "35px",
             }}
@@ -62,7 +61,7 @@ export default function Signin() {
             clearable
             bordered
             fullWidth
-            color="primary"
+            color="error"
             size="lg"
             labelPlaceholder="Password"
             css={{

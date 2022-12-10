@@ -7,7 +7,7 @@ import NoSSR from "react-no-ssr";
 export default function CustomNavbar() {
   return (
     <>
-      <Navbar isBordered height="48px" variant="sticky">
+      <Navbar isBordered height="47.8px" variant="sticky">
         <Navbar.Brand>
           <Text color="inherit" hideIn="xs">
             <Link href="/">
@@ -49,7 +49,7 @@ export default function CustomNavbar() {
           <Navbar.Link href="#">
             <strong>문제</strong>
           </Navbar.Link>
-          <Navbar.Link isActive href="#">
+          <Navbar.Link href="#">
             <strong>랭킹</strong>
           </Navbar.Link>
           <Navbar.Link href="#">

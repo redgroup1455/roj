@@ -30,10 +30,10 @@ export default function CustomNavbar() {
                     <strong
                       style={{
                         fontSize: "2rem",
-                        color: "#123456",
+                        color: "#51",
                       }}
                     >
-                      GROUP
+                      REDGROUP
                     </strong>
                   </Grid>
                 </Grid.Container>
@@ -61,12 +61,14 @@ export default function CustomNavbar() {
         </Navbar.Content>
         <Navbar.Content>
           <Navbar.Item>
-            <Link href="/auth/signin">로그인</Link>
+            <Link href="/auth/signin">Sign In</Link>
           </Navbar.Item>
           <Navbar.Item>
-            <Button auto flat href="#" color="error">
-              회원가입
-            </Button>
+            <Link href="/auth/signup">
+              <Button auto flat color="error">
+                Sign Up
+              </Button>
+            </Link>
           </Navbar.Item>
         </Navbar.Content>
       </Navbar>

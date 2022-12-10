@@ -45,9 +45,6 @@ export default function CustomNavbar() {
           hideIn="xs"
           variant="underline-rounded"
           activeColor="error"
-          style={{
-            paddingLeft: "5px"
-          }}
         >
           <Navbar.Link href="#">
             <strong>문제</strong>

@@ -12,6 +12,10 @@ export default function Signin() {
   let [username, setUsername] = useState<string>("");
   let [password, setPassword] = useState<string>("");
 
+  const ableToNext = () => {
+    return !(!policyAccepted || username.length == 0 || password.length < 8);
+  };
+
   return (
     <div
       style={{
@@ -123,25 +127,7 @@ export default function Signin() {
               setUsername(e.target.value);
             }}
           />
-          <div
-            style={{
-              transition: "all .3s ease",
-              height: "0px",
-            }}
-          >
-            <div
-              style={{
-                color: "var(--nextui-colors-error)",
-                transition: "all .3s ease",
-                maxHeight:
-                  errorMessage.length == 0
-                    ? "var(--nextui-fontSizes-xl)"
-                    : "0px",
-              }}
-            >
-              {errorMessage}
-            </div>
-          </div>
+
           <Input
             clearable
             bordered
@@ -151,7 +137,7 @@ export default function Signin() {
             labelLeft="Password"
             css={{
               marginTop: "10px",
-              marginBottom: "15px",
+              marginBottom: "3px",
             }}
             type="password"
             value={password}
@@ -164,6 +150,18 @@ export default function Signin() {
                 : ""
             }
           />
+          <div
+            style={{
+              color: "var(--nextui-colors-error)",
+              transition: "all .3s ease",
+              maxHeight:
+                errorMessage.length == 0 ? "0px" : "var(--nextui-fontSizes-xl)",
+              opacity: errorMessage.length == 0 ? "0" : "1",
+              marginBottom: "6px",
+            }}
+          >
+            {errorMessage}
+          </div>
           <Row justify="space-between">
             <div
               style={{
@@ -194,9 +192,12 @@ export default function Signin() {
             <Button
               auto
               color="error"
-              disabled={
-                !policyAccepted || username.length == 0 || password.length < 8
-              }
+              disabled={!ableToNext()}
+              onClick={() => {
+                if (!ableToNext()) return;
+
+                setErrorMessage("Signup is not available for this version.");
+              }}
             >
               Next
             </Button>

@@ -52,9 +52,9 @@ export default function Signin() {
             fullWidth
             color="error"
             size="lg"
-            labelPlaceholder="Username"
+            labelLeft="Username"
             css={{
-              marginBottom: "35px",
+              marginBottom: "10px",
             }}
           />
           <Input
@@ -63,7 +63,7 @@ export default function Signin() {
             fullWidth
             color="error"
             size="lg"
-            labelPlaceholder="Password"
+            labelLeft="Password"
             css={{
               marginBottom: "15px",
             }}

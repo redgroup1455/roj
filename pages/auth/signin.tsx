@@ -1,6 +1,9 @@
 import { Checkbox, Input, Row, Text, Button } from "@nextui-org/react";
+import { useState } from "react";
 
 export default function Signin() {
+  let [errorMessage, setErrorMessage] = useState<string>("");
+
   return (
     <div
       style={{
@@ -65,10 +68,22 @@ export default function Signin() {
             size="lg"
             labelLeft="Password"
             css={{
-              marginBottom: "15px",
+              marginBottom: "3px",
             }}
             type="password"
           />
+          <div
+            style={{
+              color: "var(--nextui-colors-error)",
+              transition: "all .3s ease",
+              maxHeight:
+                errorMessage.length == 0 ? "0px" : "var(--nextui-fontSizes-xl)",
+              opacity: errorMessage.length == 0 ? "0" : "1",
+              marginBottom: "6px",
+            }}
+          >
+            {errorMessage}
+          </div>
           <Row justify="space-between">
             <div
               style={{
@@ -83,7 +98,13 @@ export default function Signin() {
                 </Text>
               </Checkbox>
             </div>
-            <Button auto color="error">
+            <Button
+              auto
+              color="error"
+              onClick={() => {
+                setErrorMessage("Sign in is not available in this version.");
+              }}
+            >
               Sign in
             </Button>
           </Row>

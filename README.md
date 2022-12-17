@@ -1,2 +1,2 @@
 # roj
-RedGroup
+Red Online Judge

@@ -1,9 +1,14 @@
 import { Checkbox, Input, Row, Text, Button } from "@nextui-org/react";
 import { useState } from "react";
+import axios from 'axios';
 
 export default function Signin() {
   let [errorMessage, setErrorMessage] = useState<string>("");
-
+  let [username, setUsername] = useState<string>("");
+  let [password, setPassword] = useState<string>("");
+  const ableToNext = () => {
+    return !(username.length == 0 || password.length < 8);
+  };
   return (
     <div
       style={{
@@ -46,7 +51,7 @@ export default function Signin() {
             }}
           >
             <Text size="$xl">
-              Welcome to <Text b>ROJ</Text>
+              Welcome to <Text b>GOCO</Text>
             </Text>
           </div>
           <Input
@@ -58,6 +63,10 @@ export default function Signin() {
             labelLeft="Username"
             css={{
               marginBottom: "10px",
+            }}
+            defaultValue={username}
+            onChange={(e) => {
+              setUsername(e.target.value);
             }}
           />
           <Input
@@ -71,6 +80,10 @@ export default function Signin() {
               marginBottom: "3px",
             }}
             type="password"
+            defaultValue={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
           />
           <div
             style={{
@@ -102,7 +115,17 @@ export default function Signin() {
               auto
               color="error"
               onClick={() => {
-                setErrorMessage("Sign in is not available in this version.");
+                axios.post(`http://overless.vercel.app/api/cogoApi/v1/accounts/signin?id=${username}&pw=${password}`)
+                  .then(res => {
+                    if ((res.data.code == null) || (res.data.result && res.data.result == "fail")) {
+                      setErrorMessage(res.data.data);
+                    }
+                    else {
+                      localStorage.setItem("cookie", res.data.code);
+                      window.location.href = "/";
+                    }
+                  })
+
               }}
             >
               Sign in

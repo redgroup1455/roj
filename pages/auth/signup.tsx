@@ -112,7 +112,7 @@ export default function Signin() {
             }}
           >
             <Text size="$xl">
-              Welcome to <Text b>ROJ</Text>
+              Welcome to <Text b>GOCO</Text>
             </Text>
           </div>
           <Input

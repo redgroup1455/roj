@@ -7,33 +7,20 @@ import NoSSR from "react-no-ssr";
 export default function CustomNavbar() {
   return (
     <>
-      <Navbar isBordered height="47.8px" variant="sticky">
+      <Navbar isBordered height="48px" variant="sticky">
         <Navbar.Brand>
           <Text color="inherit" hideIn="xs">
             <Link href="/">
               <NoSSR>
                 <Grid.Container>
                   <Grid>
-                    <img
-                      src="/logo.png"
-                      alt="LOGO"
-                      height="48px"
-                      style={{
-                        marginRight: "8px",
-                        paddingTop: "10px",
-                        zIndex: "3000000",
-                        position: "relative",
-                      }}
-                    ></img>
-                  </Grid>
-                  <Grid>
                     <strong
                       style={{
-                        fontSize: "2rem",
+                        fontSize: "1.9rem",
                         color: "#51",
                       }}
                     >
-                      REDGROUP
+                      GOCO ONLINE JUDGE
                     </strong>
                   </Grid>
                 </Grid.Container>

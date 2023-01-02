@@ -2,19 +2,19 @@ export default function ModalPolicy() {
   return (
     <div>
       <p>
-        https://roj.vercel.app이하 RedGroup은 개인정보보호법에 따라 이용자의
+        https://goj.vercel.app이하 GOCO은 개인정보보호법에 따라 이용자의
         개인정보 보호 및 권익을 보호하고 개인정보와 관련한 이용자의 고충을
         원활하게 처리할 수 있도록 다음과 같은 처리방침을 두고 있습니다.
       </p>
       <p>
-        RedGroup은 개인정보처리방침을 개정하는 경우 웹사이트 공지사항을 통하여
+        GOCO은 개인정보처리방침을 개정하는 경우 웹사이트 공지사항을 통하여
         공지할 것입니다.
       </p>
       <p>&nbsp;</p>
       <p>○ 본 방침은부터 2022년 12월 11일부터 시행됩니다.</p>
       <p>&nbsp;</p>
       <p>
-        1. 개인정보의 처리 목적 https://roj.vercel.app이하 RedGroup은 개인정보를
+        1. 개인정보의 처리 목적 https://goj.vercel.app이하 GOCO은 개인정보를
         다음의 목적을 위해 처리합니다.
       </p>
       <p>
@@ -31,7 +31,7 @@ export default function ModalPolicy() {
         목적으로 개인정보를 처리합니다.
       </p>
       <p>
-        2. 개인정보 파일 현황 https://roj.vercel.app이하 RedGroup가 개인정보
+        2. 개인정보 파일 현황 https://goj.vercel.app이하 GOCO가 개인정보
         보호법 제32조에 따라 등록․공개하는 개인정보파일의 처리목적은 다음과
         같습니다.
       </p>
@@ -46,7 +46,7 @@ export default function ModalPolicy() {
       <p>&nbsp;&nbsp;관련법령 : </p>
       <p>3. 개인정보의 처리 및 보유 기간</p>
       <p>
-        &nbsp;&nbsp;① RedGroup은 법령에 따른 개인정보 보유·이용기간 또는
+        &nbsp;&nbsp;① GOCO은 법령에 따른 개인정보 보유·이용기간 또는
         정보주체로부터 개인정보를 수집시에 동의 받은 개인정보 보유,이용기간
         내에서 개인정보를 처리,보유합니다.
       </p>
@@ -66,7 +66,7 @@ export default function ModalPolicy() {
         개인정보주체로써 다음과 같은 권리를 행사할 수 있습니다.
       </p>
       <p>
-        &nbsp;&nbsp;① 정보주체는 RedGroup에 대해 언제든지 개인정보
+        &nbsp;&nbsp;① 정보주체는 GOCO에 대해 언제든지 개인정보
         열람,정정,삭제,처리정지 요구 등의 권리를 행사할 수 있습니다.
       </p>
     </div>

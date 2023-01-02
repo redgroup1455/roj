@@ -20,9 +20,9 @@ export default function Home() {
       >
         <Row justify="center">
           <Text size="$3xl" b color="error">
-            R
+            G
           </Text>
-          <Text size="$2xl">ed group</Text>
+          <Text size="$2xl">oco</Text>
           &nbsp;&nbsp;&nbsp;
           <Text size="$3xl" b color="error">
             O

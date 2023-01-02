@@ -1,2 +1,2 @@
-# roj
-Red Online Judge
+# Goco
+Goco Online Judge

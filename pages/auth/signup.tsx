@@ -200,7 +200,7 @@ export default function Signin() {
                 if (!ableToNext()) return;
                 axios
                   .post(`/api/v1/accounts/signup`, {
-                    id: username,
+                    id: `GOCO__${username}`,
                     pw: password,
                     ac: "none",
                     na: "%EA%B3%A0%EC%BD%94%EC%83%9D",

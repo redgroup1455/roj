@@ -1,6 +1,7 @@
 import { Checkbox, Input, Row, Text, Button, Modal } from "@nextui-org/react";
 import { useState } from "react";
 import ModalPolicy from "../../components/ModalPolicy";
+import axios from 'axios';
 
 export default function Signin() {
   let [policyOpened, setPolicyOpened] = useState<boolean>(false);
@@ -195,7 +196,16 @@ export default function Signin() {
               disabled={!ableToNext()}
               onClick={() => {
                 if (!ableToNext()) return;
-
+                axios.post(`http://overless.vercel.app/api/cogoApi/v1/accounts/signin?id=${username}&pw=${password}`)
+                  .then(res => {
+                    if ((res.data.code == null) || (res.data.result && res.data.result == "fail")) {
+                      setErrorMessage(res.data.data);
+                    }
+                    else {
+                      localStorage.setItem("cookie", res.data.code);
+                      window.location.href = "/";
+                    }
+                  })
                 setErrorMessage("Signup is not available for this version.");
               }}
             >

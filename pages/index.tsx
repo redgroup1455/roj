@@ -1,5 +1,5 @@
 import CustomNavbar from "../components/Navbar";
-import { Checkbox, Input, Row, Text, Button } from "@nextui-org/react";
+import { Row, Text } from "@nextui-org/react";
 
 export default function Home() {
   return (
@@ -7,8 +7,8 @@ export default function Home() {
       <CustomNavbar />
       <div
         style={{
-          border: "5px solid #e9e9e9",
-          background: "#e9e9e9",
+          border: "var(--nextui-colors-errorLight)",
+          background: "var(--nextui-colors-errorLight)",
           padding: "5px",
           borderRadius: "15px",
           width: "min(800px,100vw)",

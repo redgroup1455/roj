@@ -1,7 +1,7 @@
 import { Checkbox, Input, Row, Text, Button, Modal } from "@nextui-org/react";
 import { useState } from "react";
 import ModalPolicy from "../../components/ModalPolicy";
-import axios from 'axios';
+import axios from "axios";
 
 export default function Signin() {
   let [policyOpened, setPolicyOpened] = useState<boolean>(false);
@@ -93,7 +93,7 @@ export default function Signin() {
         <div
           style={{
             border: "0px solid",
-            background: "white",
+            background: "var(--nextui-colors-background)",
             padding: "20px",
             paddingBottom: "20px",
             borderRadius: "15px",
@@ -156,8 +156,10 @@ export default function Signin() {
               color: "var(--nextui-colors-error)",
               transition: "all .3s ease",
               maxHeight:
-                errorMessage.length == 0 ? "0px" : "var(--nextui-fontSizes-xl)",
-              opacity: errorMessage.length == 0 ? "0" : "1",
+                errorMessage && errorMessage.length == 0
+                  ? "0px"
+                  : "var(--nextui-fontSizes-xl)",
+              opacity: errorMessage && errorMessage.length == 0 ? "0" : "1",
               marginBottom: "6px",
             }}
           >
@@ -196,16 +198,27 @@ export default function Signin() {
               disabled={!ableToNext()}
               onClick={() => {
                 if (!ableToNext()) return;
-                axios.post(`http://overless.vercel.app/api/cogoApi/v1/accounts/signin?id=${username}&pw=${password}`)
-                  .then(res => {
-                    if ((res.data.code == null) || (res.data.result && res.data.result == "fail")) {
+                axios
+                  .post(`/api/v1/accounts/signup`, {
+                    id: username,
+                    pw: password,
+                    ac: "none",
+                    na: "%EA%B3%A0%EC%BD%94%EC%83%9D",
+                    em: `${username}@goco.com`,
+                    ph: `00000000000`,
+                    de: "LetGoCoding",
+                  })
+                  .then((res) => {
+                    if (
+                      res.data.code == null ||
+                      (res.data.result && res.data.result == "fail")
+                    ) {
                       setErrorMessage(res.data.data);
-                    }
-                    else {
+                    } else {
                       localStorage.setItem("cookie", res.data.code);
                       window.location.href = "/";
                     }
-                  })
+                  });
                 setErrorMessage("Signup is not available for this version.");
               }}
             >

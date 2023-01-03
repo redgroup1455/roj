@@ -1,6 +1,7 @@
-import { Checkbox, Input, Row, Text, Button } from "@nextui-org/react";
+import { Input, Row, Text, Button } from "@nextui-org/react";
 import { useState } from "react";
-import axios from 'axios';
+import axios from "axios";
+import { useRouter } from "next/router";
 
 export default function Signin() {
   let [errorMessage, setErrorMessage] = useState<string>("");
@@ -9,6 +10,7 @@ export default function Signin() {
   const ableToNext = () => {
     return !(username.length == 0 || password.length < 8);
   };
+  const router = useRouter();
   return (
     <div
       style={{
@@ -31,7 +33,7 @@ export default function Signin() {
         <div
           style={{
             border: "0px solid",
-            background: "white",
+            background: "var(--nextui-colors-background)",
             padding: "20px",
             paddingBottom: "20px",
             borderRadius: "15px",
@@ -90,42 +92,71 @@ export default function Signin() {
               color: "var(--nextui-colors-error)",
               transition: "all .3s ease",
               maxHeight:
-                errorMessage.length == 0 ? "0px" : "var(--nextui-fontSizes-xl)",
-              opacity: errorMessage.length == 0 ? "0" : "1",
+                errorMessage && errorMessage.length == 0
+                  ? "0px"
+                  : "var(--nextui-fontSizes-xl)",
+              opacity: errorMessage && errorMessage.length == 0 ? "0" : "1",
               marginBottom: "6px",
             }}
           >
             {errorMessage}
           </div>
           <Row justify="space-between">
-            <div
-              style={{
-                transform: "translateY(25%)",
-                top: "50%",
-                display: "relative",
-              }}
-            >
-              <Checkbox color="error">
-                <Text b size={14}>
-                  Remember me
-                </Text>
-              </Checkbox>
-            </div>
+            <div></div>
             <Button
               auto
               color="error"
               onClick={() => {
-                axios.post(`http://overless.vercel.app/api/cogoApi/v1/accounts/signin?id=${username}&pw=${password}`)
-                  .then(res => {
-                    if ((res.data.code == null) || (res.data.result && res.data.result == "fail")) {
-                      setErrorMessage(res.data.data);
-                    }
-                    else {
-                      localStorage.setItem("cookie", res.data.code);
-                      window.location.href = "/";
-                    }
+                if (!ableToNext()) return;
+                axios
+                  .post(`/api/v1/accounts/signin`, {
+                    id: username,
+                    pw: password,
                   })
-
+                  .then((res) => {
+                    if (
+                      res.data.code == null ||
+                      (res.data.result && res.data.result == "fail")
+                    ) {
+                      setErrorMessage(res.data.data);
+                    } else {
+                      localStorage.setItem("cookie", res.data.code);
+                      axios
+                        .get("/api/v1/accounts/profile/get", {
+                          params: {
+                            cookie: res.data.code as string,
+                          },
+                        })
+                        .then((v) => {
+                          let profile: {
+                            academy: string;
+                            compileErrorCount: string;
+                            level: string;
+                            name: string;
+                            rank: string;
+                            solvedProblem: string;
+                            submittedCount: string;
+                          } = v.data;
+                          localStorage.setItem("academy", profile.academy);
+                          localStorage.setItem(
+                            "compileErrorCount",
+                            profile.compileErrorCount
+                          );
+                          localStorage.setItem("level", profile.level);
+                          localStorage.setItem("name", profile.name);
+                          localStorage.setItem("rank", profile.rank);
+                          localStorage.setItem(
+                            "solvedProblem",
+                            profile.solvedProblem
+                          );
+                          localStorage.setItem(
+                            "submittedCount",
+                            profile.solvedProblem
+                          );
+                          router.push("/");
+                        });
+                    }
+                  });
               }}
             >
               Sign in

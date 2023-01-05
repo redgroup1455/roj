@@ -31,43 +31,43 @@ export const config = {
   },
 };
 
-export default function handler(
+export default (function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>
 ) {
   if (req.method === "POST") {
-    const cookie = req.body.cookie;
-    const lang = req.body.lang;
-    const pid = req.body.pid;
-
-    if (!cookie) {
-      res.send(
-        JSON.stringify({
-          e: "Query not found",
-        })
-      );
-      return;
-    }
-    if (!lang) {
-      res.send(
-        JSON.stringify({
-          e: "Query not found",
-        })
-      );
-      return;
-    }
-    if (!pid) {
-      res.send(
-        JSON.stringify({
-          e: "Query not found",
-        })
-      );
-      return;
-    }
     return new Promise<void>(async (resolve, reject) => {
       const form = new formidable.IncomingForm();
       form.parse(req, async function (err, fields, files) {
         let code = fields.code;
+        const cookie = fields.cookie;
+        const lang = fields.lang;
+        const pid = fields.pid;
+
+        if (!cookie) {
+          res.send(
+            JSON.stringify({
+              e: "Query not found",
+            })
+          );
+          return;
+        }
+        if (!lang) {
+          res.send(
+            JSON.stringify({
+              e: "Query not found",
+            })
+          );
+          return;
+        }
+        if (!pid) {
+          res.send(
+            JSON.stringify({
+              e: "Query not found",
+            })
+          );
+          return;
+        }
         if (!code) {
           res.send(
             JSON.stringify({
@@ -138,4 +138,4 @@ export default function handler(
   }
 
   res.redirect("/404");
-}
+});

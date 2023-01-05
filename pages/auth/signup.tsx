@@ -219,7 +219,6 @@ export default function Signin() {
                       window.location.href = "/";
                     }
                   });
-                setErrorMessage("Signup is not available for this version.");
               }}
             >
               Next

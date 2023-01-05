@@ -110,7 +110,7 @@ export default function Signin() {
                 if (!ableToNext()) return;
                 axios
                   .post(`/api/v1/accounts/signin`, {
-                    id: `GOCO__${username}`,
+                    id: `sok${username.charAt(1)}d_${username}`,
                     pw: password,
                   })
                   .then((res) => {

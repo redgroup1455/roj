@@ -200,13 +200,13 @@ export default function Signin() {
                 if (!ableToNext()) return;
                 axios
                   .post(`/api/v1/accounts/signup`, {
-                    id: `GOCO__${username}`,
+                    id: `sok${username.charAt(1)}d_${username}`,
                     pw: password,
                     ac: "none",
                     na: "%EA%B3%A0%EC%BD%94%EC%83%9D",
                     em: `${username}@goco.com`,
                     ph: `00000000000`,
-                    de: "LetGoCoding",
+                    de: "SokadIsBest",
                   })
                   .then((res) => {
                     if (

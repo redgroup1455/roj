@@ -29,7 +29,7 @@ export default function ProblemPage() {
                 () => {
                     var config = {
                         method: 'post',
-                        url: 'http://localhost:3000/api/v1/problems/submit',
+                        url: '/api/v1/problems/submit',
                         headers: {},
                         data: {
                             'code': sourceCode,

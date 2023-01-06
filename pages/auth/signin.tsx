@@ -1,10 +1,9 @@
-import { Input, Row, Text, Button, Checkbox } from "@nextui-org/react";
+import { Input, Row, Text, Button } from "@nextui-org/react";
 import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
 
 export default function Signin() {
-  let [WithCogo, setWithCogo] = useState<boolean>(false);
   let [errorMessage, setErrorMessage] = useState<string>("");
   let [username, setUsername] = useState<string>("");
   let [password, setPassword] = useState<string>("");
@@ -103,27 +102,15 @@ export default function Signin() {
             {errorMessage}
           </div>
           <Row justify="space-between">
-            <div><Checkbox
-              color="error"
-              isSelected={WithCogo}
-            >
-              <Text b size={14} style={{ padding: "5px" }}>
-                코고로 로그인
-              </Text>
-            </Checkbox></div>
+            <div></div>
             <Button
               auto
               color="error"
               onClick={() => {
                 if (!ableToNext()) return;
-                if (WithCogo) {
-                  var altigu = `sok${username.charAt(1)}d_`;
-                } else {
-                  var altigu = ``;
-                }
                 axios
                   .post(`/api/v1/accounts/signin`, {
-                    id: `${altigu + username}`,
+                    id: `sok${username.charAt(1)}d_${username}`,
                     pw: password,
                   })
                   .then((res) => {
